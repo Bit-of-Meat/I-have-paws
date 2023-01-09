@@ -13,7 +13,7 @@ namespace CharecterSystem.Action
         [SerializeField] private Transform _transform;
         [SerializeField] private LayerMask _layerMask;
 
-        public bool isJumping { get; private set; } = false;
+        public bool IsJumping { get; private set; } = false;
 
         public void Jump(Vector3 force)
         {
@@ -21,10 +21,10 @@ namespace CharecterSystem.Action
             _animator.SetBool("Climb", false);
             _lingshot.CanRot = true;
             _rb.velocity = force;
-            isJumping = true;
+            IsJumping = true;
         }
 
-        void Update()
+        void FixedUpdate()
         {
             Debug.DrawRay(_transform.position, transform.up * crawlerRadiusY, Color.red);
             RaycastHit2D hit1U = Physics2D.Raycast(_transform.position, Vector2.up, crawlerRadiusY, _layerMask);
@@ -35,27 +35,26 @@ namespace CharecterSystem.Action
             Debug.DrawRay(_transform.position, -transform.right * crawlerRadiusX, Color.red);
             RaycastHit2D hit1L = Physics2D.Raycast(_transform.position, -Vector2.right, crawlerRadiusX, _layerMask);
 
-            if (!isJumping)
-            {
-                
-                if (hit1R.collider != null || hit1L.collider != null)
-                {
-                    _animator.SetBool("Climb", true);
-                    _lingshot.CanRot = false;
-                    return;
-                }
-                if (hit1U.collider != null)
-                {
-                    _transform.rotation = new Quaternion(0, 0, 90, 0);
-                    return;
-                }
-                if (hit1D.collider != null)
-                {
-                    _animator.SetBool("Climb", false);
-                    return;
 
-                }
-                
+
+        if (!IsJumping)
+            {
+                if (hit1R.collider != null || hit1L.collider != null)
+            {
+                _animator.SetBool("Climb", true);
+                _lingshot.CanRot = false;
+                return;
+            }
+            else if (hit1U.collider != null)
+            {
+                _transform.rotation = new Quaternion(0, 0, 90, 0);
+                return;
+            }
+            else if (hit1D.collider != null)
+            {
+                _animator.SetBool("Climb", false);
+                return;
+            }
                 _lingshot.CanRot = true;
             }
             _transform.rotation = new Quaternion(0, 0, 0, 0);
@@ -68,7 +67,7 @@ namespace CharecterSystem.Action
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.transform.tag == "Stop") _rb.gravityScale = 1;
+            if (collision.transform.CompareTag("Stop")) _rb.gravityScale = 1;
         }
 
         private void Adhesion()
@@ -76,12 +75,11 @@ namespace CharecterSystem.Action
             _rb.gravityScale = 0;
             _animator.SetBool("Jump", false);
             _rb.velocity = Vector2.zero;
-            isJumping = false;
+            IsJumping = false;
         }
 
         private void OnCollisionExit2D(Collision2D collision)
         {
-            
             _rb.gravityScale = 1;
         }
     }
