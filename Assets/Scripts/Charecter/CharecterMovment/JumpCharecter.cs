@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace CharecterSystem.Action
 {
@@ -20,7 +21,7 @@ namespace CharecterSystem.Action
             _animator.SetBool("Jump", false);
             if (!IsJumping)
             {
-                _lingshot.CanRot = true;
+            _lingshot.CanRot = true;
             }
             _rb.velocity = force;
             IsJumping = true;
@@ -32,7 +33,7 @@ namespace CharecterSystem.Action
             RaycastHit2D hit1U = Physics2D.Raycast(_transform.position, Vector2.up, crawlerRadiusY, _layerMask);
             Debug.DrawRay(_transform.position, -transform.up * crawlerRadiusY, Color.red);
             RaycastHit2D hit1D = Physics2D.Raycast(_transform.position, -Vector2.up, crawlerRadiusY, _layerMask);
-            Debug.DrawRay(_transform.position, transform.right * crawlerRadiusX, Color.red);
+            Debug.DrawRay(_transform.position, transform.right * crawlerRadiusX , Color.red);
             RaycastHit2D hit1R = Physics2D.Raycast(_transform.position, Vector2.right, crawlerRadiusX, _layerMask);
             Debug.DrawRay(_transform.position, -transform.right * crawlerRadiusX, Color.red);
             RaycastHit2D hit1L = Physics2D.Raycast(_transform.position, -Vector2.right, crawlerRadiusX, _layerMask);
@@ -40,31 +41,30 @@ namespace CharecterSystem.Action
 
             if (!IsJumping)
             {
-                _lingshot.CanRot = false;
-                if (hit1R.collider != null || hit1L.collider != null)
-                {
-                    _animator.SetBool("Jump", false);
-                    _animator.SetBool("Climb", true);
-                    _transform.rotation = new Quaternion(0, 0, 0, 0);
-                    return;
-                }
+            _lingshot.CanRot = false;
+            if (hit1R.collider != null || hit1L.collider != null)
+            {
+            _animator.SetBool("Jump", false);
+            _animator.SetBool("Climb", true);
+            _transform.rotation = new Quaternion(0, 0, 0, 0);
+            return;
+            }
 
-                else if (hit1U.collider != null)
-                {
-                    _animator.SetBool("Climb", false);
-                    if (transform.rotation.z != 1)
-                    {
-                        _transform.rotation = new Quaternion(0, 0, 90, 0);
-                    }
-                    return;
-                }
+            else if (hit1U.collider != null)
+            {
+            _animator.SetBool("Climb", false);
+            if (transform.rotation.z != 1) {
+            _transform.rotation = new Quaternion(0, 0, 90, 0);
+            }
+            return;
+            }
 
-                else if (hit1D.collider != null)
-                {
-                    _animator.SetBool("Climb", false);
-                    _transform.rotation = new Quaternion(0, 0, 0, 0);
-                    return;
-                }
+            else if (hit1D.collider != null)
+            {
+            _animator.SetBool("Climb", false);
+            _transform.rotation = new Quaternion(0, 0, 0, 0);
+            return;
+            }
             }
         }
 
