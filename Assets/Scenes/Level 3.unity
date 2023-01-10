@@ -353,10 +353,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6481408d91f0d4b84b179616c1afb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slingshot: {fileID: 0}
-  _animator: {fileID: 0}
-  _rbPlayer: {fileID: 0}
-  _animatorScren: {fileID: 995253322}
+  _slingshot: {fileID: 1923396125}
+  _animator: {fileID: 1923396124}
+  _rbPlayer: {fileID: 1923396123}
+  _animatorScren: {fileID: 1923396124}
   _goNextScene: 0
   _idNextScene: 2
   _timeNextScene: 3
@@ -42734,10 +42734,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6481408d91f0d4b84b179616c1afb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slingshot: {fileID: 0}
-  _animator: {fileID: 0}
-  _rbPlayer: {fileID: 0}
-  _animatorScren: {fileID: 995253322}
+  _slingshot: {fileID: 1923396125}
+  _animator: {fileID: 1923396124}
+  _rbPlayer: {fileID: 1923396123}
+  _animatorScren: {fileID: 1923396124}
   _goNextScene: 0
   _idNextScene: 2
   _timeNextScene: 3
@@ -44382,10 +44382,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6481408d91f0d4b84b179616c1afb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slingshot: {fileID: 0}
-  _animator: {fileID: 0}
-  _rbPlayer: {fileID: 0}
-  _animatorScren: {fileID: 995253322}
+  _slingshot: {fileID: 1923396125}
+  _animator: {fileID: 1923396124}
+  _rbPlayer: {fileID: 1923396123}
+  _animatorScren: {fileID: 1923396124}
   _goNextScene: 0
   _idNextScene: 2
   _timeNextScene: 3
@@ -45023,10 +45023,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6481408d91f0d4b84b179616c1afb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slingshot: {fileID: 0}
-  _animator: {fileID: 0}
-  _rbPlayer: {fileID: 0}
-  _animatorScren: {fileID: 995253322}
+  _slingshot: {fileID: 1923396125}
+  _animator: {fileID: 1923396124}
+  _rbPlayer: {fileID: 1923396123}
+  _animatorScren: {fileID: 1923396124}
   _goNextScene: 0
   _idNextScene: 2
   _timeNextScene: 3
