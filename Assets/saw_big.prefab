@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tagPlayer: Player
+  _animatorScren: {fileID: 0}
   _effectDeath: {fileID: 6400610195084291980, guid: feb401f57425cb84289a98c3c27efb59, type: 3}
   _waitForSecondsDeath: 2
 --- !u!95 &2970450664800345095
@@ -137,4 +138,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.72
+  m_Radius: 0.6257665

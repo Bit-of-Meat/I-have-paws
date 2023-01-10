@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4695703844863105582}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.93, z: 0}
+  m_LocalPosition: {x: -0.063, y: 0.937, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 4695703845400928903}
+  _start: 0
   _timeStart: 4
   _timeEnd: 2
 --- !u!114 &4695703844863105578
@@ -115,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tagPlayer: Player
+  _animatorScren: {fileID: 0}
   _effectDeath: {fileID: 6400610195084291980, guid: feb401f57425cb84289a98c3c27efb59, type: 3}
   _waitForSecondsDeath: 2
 --- !u!61 &4695703844863105579
