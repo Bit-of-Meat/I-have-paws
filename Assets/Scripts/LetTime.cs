@@ -15,7 +15,6 @@ public class LetTime : MonoBehaviour
 
     void Start()
     {
-        objs1 = GameObject.FindGameObjectsWithTag("Sound");
         Timer0 = _timeStart;
         clockText.text = _timeStart.ToString();
         if (_start) _animator.SetBool("Show", true);
