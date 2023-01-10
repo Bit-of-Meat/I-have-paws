@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace CharecterSystem.Action
 {
@@ -17,9 +18,11 @@ namespace CharecterSystem.Action
 
         public void Jump(Vector3 force)
         {
-            _animator.SetBool("Jump", true);
-            _animator.SetBool("Climb", false);
+            _animator.SetBool("Jump", false);
+            if (!IsJumping)
+            {
             _lingshot.CanRot = true;
+            }
             _rb.velocity = force;
             IsJumping = true;
         }
@@ -37,27 +40,38 @@ namespace CharecterSystem.Action
 
 
 
-        if (!IsJumping)
+            if (!IsJumping)
             {
-                if (hit1R.collider != null || hit1L.collider != null)
+            _lingshot.CanRot = false;
+            if (hit1R.collider != null || hit1L.collider != null)
             {
-                _animator.SetBool("Climb", true);
-                _lingshot.CanRot = false;
-                return;
+            _animator.SetBool("Jump", false);
+            _lingshot.CanRot = false;
+            _animator.SetBool("Climb", true);
+            _transform.rotation = new Quaternion(0, 0, 0, 0);
+            return;
             }
+
             else if (hit1U.collider != null)
             {
-                _transform.rotation = new Quaternion(0, 0, 90, 0);
-                return;
+                    if (transform.rotation.z != 1) {
+                        _transform.rotation = new Quaternion(0, 0, 90, 0);
+                    }
+            _lingshot.CanRot = false;
+            _animator.SetBool("Climb", false);
+            _animator.SetBool("Jump", false);
+            return;
             }
+
             else if (hit1D.collider != null)
             {
-                _animator.SetBool("Climb", false);
-                return;
-            }
-                _lingshot.CanRot = true;
-            }
             _transform.rotation = new Quaternion(0, 0, 0, 0);
+            _animator.SetBool("Climb", false);
+            _animator.SetBool("Jump", false);
+            _lingshot.CanRot = false;
+            return;
+            }
+            }
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -72,6 +86,7 @@ namespace CharecterSystem.Action
 
         private void Adhesion()
         {
+            _lingshot.CanRot = false;
             _rb.gravityScale = 0;
             _animator.SetBool("Jump", false);
             _rb.velocity = Vector2.zero;
@@ -81,6 +96,7 @@ namespace CharecterSystem.Action
         private void OnCollisionExit2D(Collision2D collision)
         {
             _rb.gravityScale = 1;
+            _animator.SetBool("Jump", true);
         }
     }
 }
