@@ -17,9 +17,11 @@ namespace CharecterSystem.Action
 
         public void Jump(Vector3 force)
         {
-            _animator.SetBool("Jump", true);
-            _animator.SetBool("Climb", false);
-            _lingshot.CanRot = true;
+            _animator.SetBool("Jump", false);
+            if (!IsJumping)
+            {
+                _lingshot.CanRot = true;
+            }
             _rb.velocity = force;
             IsJumping = true;
         }
@@ -30,34 +32,40 @@ namespace CharecterSystem.Action
             RaycastHit2D hit1U = Physics2D.Raycast(_transform.position, Vector2.up, crawlerRadiusY, _layerMask);
             Debug.DrawRay(_transform.position, -transform.up * crawlerRadiusY, Color.red);
             RaycastHit2D hit1D = Physics2D.Raycast(_transform.position, -Vector2.up, crawlerRadiusY, _layerMask);
-            Debug.DrawRay(_transform.position, transform.right * crawlerRadiusX , Color.red);
+            Debug.DrawRay(_transform.position, transform.right * crawlerRadiusX, Color.red);
             RaycastHit2D hit1R = Physics2D.Raycast(_transform.position, Vector2.right, crawlerRadiusX, _layerMask);
             Debug.DrawRay(_transform.position, -transform.right * crawlerRadiusX, Color.red);
             RaycastHit2D hit1L = Physics2D.Raycast(_transform.position, -Vector2.right, crawlerRadiusX, _layerMask);
 
 
-
-        if (!IsJumping)
+            if (!IsJumping)
             {
-                if (hit1R.collider != null || hit1L.collider != null)
-            {
-                _animator.SetBool("Climb", true);
                 _lingshot.CanRot = false;
-                return;
+                if (hit1R.collider != null || hit1L.collider != null)
+                {
+                    _animator.SetBool("Jump", false);
+                    _animator.SetBool("Climb", true);
+                    _transform.rotation = new Quaternion(0, 0, 0, 0);
+                    return;
+                }
+
+                else if (hit1U.collider != null)
+                {
+                    _animator.SetBool("Climb", false);
+                    if (transform.rotation.z != 1)
+                    {
+                        _transform.rotation = new Quaternion(0, 0, 90, 0);
+                    }
+                    return;
+                }
+
+                else if (hit1D.collider != null)
+                {
+                    _animator.SetBool("Climb", false);
+                    _transform.rotation = new Quaternion(0, 0, 0, 0);
+                    return;
+                }
             }
-            else if (hit1U.collider != null)
-            {
-                _transform.rotation = new Quaternion(0, 0, 90, 0);
-                return;
-            }
-            else if (hit1D.collider != null)
-            {
-                _animator.SetBool("Climb", false);
-                return;
-            }
-                _lingshot.CanRot = true;
-            }
-            _transform.rotation = new Quaternion(0, 0, 0, 0);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -81,6 +89,7 @@ namespace CharecterSystem.Action
         private void OnCollisionExit2D(Collision2D collision)
         {
             _rb.gravityScale = 1;
+            _animator.SetBool("Jump", true);
         }
     }
 }

@@ -13,9 +13,9 @@ public class Slingshot : MonoBehaviour
     [SerializeField] private SpriteRenderer _sprite;
     private Vector3 _initialPosition;
     private Vector3 _currentPosition;
-    private bool _isMouseDown;
-    public bool IsGround;
-    public bool CanRot = true;
+    public bool IsMouseDown { get; private set; }
+    public bool IsGround { get; set; }
+    public bool CanRot { get; set; } = true;
 
     public void Update()
     {
@@ -23,14 +23,14 @@ public class Slingshot : MonoBehaviour
         {
             if(CanRot) _sprite.flipX = (_currentPosition - transform.position).x > 0;
 
-            if (Input.GetMouseButtonDown(0) && _isMouseDown)
+            if (Input.GetMouseButtonDown(0) && IsMouseDown)
             {
                 _initialPosition = transform.position;
                 _lineRenderer.SetPosition(0, _initialPosition);
                 _lineRenderer.positionCount = 1;
                 _lineRenderer.enabled = true;
             }
-            else if (_isMouseDown)
+            else if (IsMouseDown)
             {
                 Vector3 mousePos = Input.mousePosition;
                 mousePos.z = 10;
@@ -54,7 +54,7 @@ public class Slingshot : MonoBehaviour
         if (IsGround)
         {
             _animator.SetInteger("JumpPower", 10);
-            _isMouseDown = true;
+            IsMouseDown = true;
         }
     }
 
@@ -63,7 +63,7 @@ public class Slingshot : MonoBehaviour
         if (IsGround)
         {
             _animator.SetInteger("JumpPower", 0);
-            _isMouseDown = false;
+            IsMouseDown = false;
             Vector3 force = (_currentPosition - transform.position) * _force * -1;
             _jumpCharecter.Jump(force);
         }
