@@ -39,14 +39,12 @@ namespace CharecterSystem.Action
             RaycastHit2D hit1L = Physics2D.Raycast(_transform.position, -Vector2.right, crawlerRadiusX, _layerMask);
 
 
-
             if (!IsJumping)
             {
             _lingshot.CanRot = false;
             if (hit1R.collider != null || hit1L.collider != null)
             {
             _animator.SetBool("Jump", false);
-            _lingshot.CanRot = false;
             _animator.SetBool("Climb", true);
             _transform.rotation = new Quaternion(0, 0, 0, 0);
             return;
@@ -54,21 +52,17 @@ namespace CharecterSystem.Action
 
             else if (hit1U.collider != null)
             {
-                    if (transform.rotation.z != 1) {
-                        _transform.rotation = new Quaternion(0, 0, 90, 0);
-                    }
-            _lingshot.CanRot = false;
             _animator.SetBool("Climb", false);
-            _animator.SetBool("Jump", false);
+            if (transform.rotation.z != 1) {
+            _transform.rotation = new Quaternion(0, 0, 90, 0);
+            }
             return;
             }
 
             else if (hit1D.collider != null)
             {
-            _transform.rotation = new Quaternion(0, 0, 0, 0);
             _animator.SetBool("Climb", false);
-            _animator.SetBool("Jump", false);
-            _lingshot.CanRot = false;
+            _transform.rotation = new Quaternion(0, 0, 0, 0);
             return;
             }
             }
@@ -86,7 +80,6 @@ namespace CharecterSystem.Action
 
         private void Adhesion()
         {
-            _lingshot.CanRot = false;
             _rb.gravityScale = 0;
             _animator.SetBool("Jump", false);
             _rb.velocity = Vector2.zero;
