@@ -518,7 +518,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vignette_speed: 2
+  _PostProcessVolume: {fileID: 519420035}
   tutorial: {fileID: 1496344415}
+  _slingshot: {fileID: 1927778492}
 --- !u!1 &579804768
 GameObject:
   m_ObjectHideFlags: 0
@@ -35974,9 +35976,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1496344418}
   - component: {fileID: 1496344417}
-  - component: {fileID: 1496344416}
   - component: {fileID: 1496344419}
-  - component: {fileID: 1496344420}
+  - component: {fileID: 1496344421}
   m_Layer: 0
   m_Name: Mouse Tutorial
   m_TagString: Untagged
@@ -35984,26 +35985,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &1496344416
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1496344415}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6cd06e612160cca40bd3e000bc8a6e94, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &1496344417
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -36064,7 +36045,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496344415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.895, y: -0.785, z: 1}
+  m_LocalPosition: {x: -13.178, y: -0.794, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36179,20 +36160,26 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &1496344420
-MonoBehaviour:
+--- !u!95 &1496344421
+Animator:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496344415}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15a6814c3259d724ba1ee6a96106cba9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vignette_speed: 2
-  tutorial: {fileID: 1496344415}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8309fd3d168e61046bec088f4e6d3efd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1574354262
 GameObject:
   m_ObjectHideFlags: 0
@@ -36278,6 +36265,17 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 7532911803386400866, guid: 9f088d55eb3b61945a6a1485a6808adb, type: 3}
   m_PrefabInstance: {fileID: 7532911803162296539}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1927778492 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7532911803386400864, guid: 9f088d55eb3b61945a6a1485a6808adb, type: 3}
+  m_PrefabInstance: {fileID: 7532911803162296539}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599784646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07aaca669714b9243b0695dc4f83886e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1939385172
 GameObject:
   m_ObjectHideFlags: 0
