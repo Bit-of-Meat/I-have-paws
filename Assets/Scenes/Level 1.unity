@@ -41683,6 +41683,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07aaca669714b9243b0695dc4f83886e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &1927778498 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7532911803386400869, guid: 9f088d55eb3b61945a6a1485a6808adb, type: 3}
+  m_PrefabInstance: {fileID: 7532911803162296539}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1939385172
 GameObject:
   m_ObjectHideFlags: 0
@@ -42448,5 +42453,9 @@ PrefabInstance:
       propertyPath: _animatorScren
       value: 
       objectReference: {fileID: 1927778489}
+    - target: {fileID: 9036880862372424447, guid: 904e0ad28b9bde44891919eebfa0e658, type: 3}
+      propertyPath: _spriteRendererPlayer
+      value: 
+      objectReference: {fileID: 1927778498}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 904e0ad28b9bde44891919eebfa0e658, type: 3}
