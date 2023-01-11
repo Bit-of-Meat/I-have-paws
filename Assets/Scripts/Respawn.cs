@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class Respawn : MonoBehaviour
 {
+    private GameMaster gm;
     [SerializeField] private GameObject player;
     [SerializeField] private SpriteRenderer _spriteRendererPlayer;
     [SerializeField] private Animator _animatorScren;
@@ -14,11 +15,13 @@ public class Respawn : MonoBehaviour
     [SerializeField] private float _timeStartAnimationNextScene;
     [SerializeField] private float _timeNextScene;
     [SerializeField] private float _timePritech;
+    public Vector2 nextLevelPos;
     private bool _used = false;
     private SpriteRenderer _spriteRenderer;
 
     private void Start()
     {
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
         _goNextScene = false;
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -44,6 +47,7 @@ public class Respawn : MonoBehaviour
 
     private void OnTriggerExit2D (Collider2D collision)
     {
+        gm.lastCheckPointPos = nextLevelPos;
         _used = true;
         _goNextScene = true;
         anim.SetBool("_goNextScene", _goNextScene);
