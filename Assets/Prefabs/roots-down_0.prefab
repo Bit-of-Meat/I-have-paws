@@ -99,9 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 060112a095e844c439d7e3e26bf5f20f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clockText: {fileID: 0}
   _animator: {fileID: 4695703845400928903}
   _start: 0
   _timeStart: 4
+  Timer0: 0
   _timeEnd: 2
 --- !u!114 &4695703844863105578
 MonoBehaviour:
@@ -158,7 +160,7 @@ GameObject:
   - component: {fileID: 4695703845400928903}
   m_Layer: 0
   m_Name: roots-down_0
-  m_TagString: Untagged
+  m_TagString: Root
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
