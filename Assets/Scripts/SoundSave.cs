@@ -11,7 +11,7 @@ public class SoundSave : MonoBehaviour
     void Awake()
     {
         objs1 = GameObject.FindGameObjectsWithTag("Sound"); //не забываем задать тег Sound для префаба с музыкой
-        if (objs1.Length == 0)
+        if (objs1.Length == 0 && (SceneManager.GetActiveScene().buildIndex != 4 || SceneManager.GetActiveScene().buildIndex != 0))
         {
             BGMusic = Instantiate(BGMusic); //создаем объект из префаба
             BGMusic.name = "BGMusic";  //необязательно, просто внешний вид улучшает:)
@@ -21,15 +21,10 @@ public class SoundSave : MonoBehaviour
         {
             BGMusic = GameObject.Find("BGMusic"); //обращаемся к объекту, если он уже существует.
         }
-        if(SceneManager.GetActiveScene().buildIndex == 4)
+        if(SceneManager.GetActiveScene().buildIndex == 4 || SceneManager.GetActiveScene().buildIndex == 0)
         {
             Destroy(objs1[0]);
         }
-        if(Volume.volume == 0)
-        {
-            Volume.volume = 0.5f;
-        }
-        musicVolume = Volume.volume;
     }
     void Start()
     {
@@ -39,7 +34,7 @@ public class SoundSave : MonoBehaviour
 
     void Update()
     {
-        audioSrc.volume = musicVolume;  //устанавливаем громкость при изменении слайдера
+        if(audioSrc != null) audioSrc.volume = Volume.volume;  //устанавливаем громкость при изменении слайдера
     }
 
     public void SetVolume(float vol)
