@@ -7,6 +7,7 @@ TagManager:
   - Let
   - Sound
   - Stop
+  - Root
   layers:
   - Default
   - TransparentFX
